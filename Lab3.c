@@ -39,11 +39,7 @@ _CONFIG1(JTAGEN_OFF & GCP_OFF & GWRP_OFF & BKBUG_ON & COE_ON & ICS_PGx1 &
 #define PR_VALUE (57600/PWM_FREQ)-1		// using presalar of 256 with F_CY
 
 volatile int state = 0;
-<<<<<<< HEAD
-volatile double POT_POS = 0;
-=======
 volatile double POT_POS = 0.0;
->>>>>>> master
 
 int main(void) {
 	char value[8];
@@ -107,71 +103,7 @@ int main(void) {
 
 
 		}
-
-
 	}
-	
-
-<<<<<<< HEAD
-	TRISAbits.TRISA0 = 1;	// set pin 2 to be input
-	AD1PCFGbits.PCFG0 = 0;	// set pin 2 to be analog input
-
-	TRISBbits.TRISB8 = 0;	// setting pin 17 to be output
-	TRISBbits.TRISB9 = 0;	// setting pin 18 to be output
-	RPOR4bits.RP8R = 18;	// pin RB8 (RP8) for OC1
-	RPOR4bits.RP9R = 19;	// pin RB9 (RP9) for OC2
-
-	TRISBbits.TRISB5 = 1;	// switch 1 is input
-
-	CNEN2bits.CN27IE = 1;	// enable change notification for switch 1
-
-	IFS1bits.CNIF = 0;		// set CN flag low
-	IEC1bits.CNIE = 1;		// enable CN
-
-	PWM_init(POT_POS);
-
-	/***************************************
-	
-	TODO: Analog to digital conversions will go in here to find out the position of the
-	potentiometer.  This position will be used to set the duty cycle for the motion of
-	the motors in the Pulse Width Modulation (PWM).
-	
-	***************************************/
-
-	// will arbitrarily define the result of the ADC as the double pot_pos (see above)
-	
-	// we have a 10-bit ADC, so the values from the approximation range from 0-1023 [2^10-1]
-	// this means that our middle value is 511.5
-
-
-
-
-	while (1) {
-		PWM_Update(POT_POS);
-		
-		switch (state) {
-
-			case 0:		// Idle
-
-			case 1:		// Forward
-
-			case 2:		// Backward
-
-
-
-
-
-		}
-
-
-	}
-	
-
-=======
->>>>>>> master
-
-
-
 
 
 	return 0;
