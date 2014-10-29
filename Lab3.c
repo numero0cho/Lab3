@@ -67,7 +67,8 @@ int main(void) {
 	AD1CSSL = 0; // No inputs is scanned
 
 	AD1CON1bits.ADON = 1; // Turn on A/D
-
+	
+	LCDInitialize();
 	PWM_init(POT_POS);
 
 	/***************************************
@@ -87,22 +88,23 @@ int main(void) {
 
 		while (AD1CON1bits.DONE != 1){};     // keeps waiting until conversion finished
 		POT_POS = ADC1BUF0;
-
-		sprintf(value, "%6d", POT_POS);
-		LCDMoveCursor(0, 0); LCDPrintString(value);
+	//	LCDClear();
+		sprintf(value, "%6.2f", POT_POS);
+		LCDMoveCursor(0, 0);
+		LCDPrintString(value);
 
 		PWM_Update(POT_POS);
 
-		switch (state) {
-
-			case 0:		// Idle
-
-			case 1:		// Forward
-
-			case 2:		// Backward
-
-
-		}
+//		switch (state) {
+//
+//			case 0:		// Idle
+//
+//			case 1:		// Forward
+//
+//			case 2:		// Backward
+//
+//
+//		}
 	}
 
 
