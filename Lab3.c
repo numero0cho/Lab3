@@ -98,28 +98,28 @@ int main(void) {
 		switch (state) {
 
 			case 0:		// Idle
-				RPOR0bits.RP0R = 0;
-				RPOR0bits.RP1R = 0;
-				RPOR1bits.RP2R = 0;
-				RPOR3bits.RP6R = 0;
+				RPOR0bits.RP0R = 0;	// left wheel
+				RPOR0bits.RP1R = 0;	// left wheel
+				RPOR1bits.RP2R = 0;	// right wheel
+				RPOR3bits.RP6R = 0;	// right wheel
 				break;
 			case 1:		// Forward
-				RPOR0bits.RP0R = 18;
-				RPOR0bits.RP1R = 0;
-				RPOR1bits.RP2R = 19;
-				RPOR3bits.RP6R = 0;
+				RPOR0bits.RP0R = 18;	// left wheel
+				RPOR0bits.RP1R = 0;		// left wheel
+				RPOR1bits.RP2R = 19;	// right wheel
+				RPOR3bits.RP6R = 0;		// right wheel
 				break;
 			case 2:     // Idle
-				RPOR0bits.RP0R = 0;
-				RPOR0bits.RP1R = 0;
-				RPOR1bits.RP2R = 0;
-				RPOR3bits.RP6R = 0;
+				RPOR0bits.RP0R = 0;	// left wheel
+				RPOR0bits.RP1R = 0;	// left wheel
+				RPOR1bits.RP2R = 0;	// right wheel
+				RPOR3bits.RP6R = 0;	// right wheel
 				break;
 			case 3:		// Backward
-				RPOR0bits.RP0R = 0;
-				RPOR0bits.RP1R = 18;
-				RPOR1bits.RP2R = 0;
-				RPOR3bits.RP6R = 19;
+				RPOR0bits.RP0R = 0;		// left wheel
+				RPOR0bits.RP1R = 18;	// left wheel
+				RPOR1bits.RP2R = 0;		// right wheel
+				RPOR3bits.RP6R = 19;	// right wheel
 				break;
 		}
 	}
