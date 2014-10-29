@@ -44,10 +44,12 @@ volatile double POT_POS = 0.0;
 int main(void) {
 	char value[8];
 
-	TRISBbits.TRISB8 = 0;	// setting pin 17 to be output
-	TRISBbits.TRISB9 = 0;	// setting pin 18 to be output
-	RPOR4bits.RP8R = 18;	// pin RB8 (RP8) for OC1
-	RPOR4bits.RP9R = 19;	// pin RB9 (RP9) for OC2
+	TRISBbits.TRISB0 = 0;	// setting pin to be output
+	TRISBbits.TRISB1 = 0;	// setting pin to be output
+	TRISBbits.TRISB2 = 0;
+	TRISBbits.TRISB6 = 0;
+	//RPOR4bits.RP8R = 18;	// pin RB8 (RP8) for OC1
+	//RPOR4bits.RP9R = 19;	// pin RB9 (RP9) for OC2
 
 	TRISBbits.TRISB5 = 1;	// switch 1 is input; pin 14
 
@@ -96,12 +98,29 @@ int main(void) {
 		switch (state) {
 
 			case 0:		// Idle
-
+				RPOR0bits.RP0R = 0;
+				RPOR0bits.RP1R = 0;
+				RPOR1bits.RP2R = 0;
+				RPOR3bits.RP6R = 0;
+				break;
 			case 1:		// Forward
-
-			case 2:		// Backward
-
-
+				RPOR0bits.RP0R = 18;
+				RPOR0bits.RP1R = 0;
+				RPOR1bits.RP2R = 19;
+				RPOR3bits.RP6R = 0;
+				break;
+			case 2:     // Idle
+				RPOR0bits.RP0R = 0;
+				RPOR0bits.RP1R = 0;
+				RPOR1bits.RP2R = 0;
+				RPOR3bits.RP6R = 0;
+				break;
+			case 3:		// Backward
+				RPOR0bits.RP0R = 0;
+				RPOR0bits.RP1R = 18;
+				RPOR1bits.RP2R = 0;
+				RPOR3bits.RP6R = 19;
+				break;
 		}
 	}
 
@@ -119,10 +138,11 @@ void __attribute__((interrupt)) _CNInterrupt(void) { // for SW1 RB5
 	}
 
 	//pressed (let's switch states)
-	if (state = 2) {
+	if (state = 3) {
 		state = 0;
 	}
 	else {
 		state++;
 	}
+	return;
 }
