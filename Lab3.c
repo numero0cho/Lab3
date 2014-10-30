@@ -47,9 +47,7 @@ int main(void) {
 	TRISBbits.TRISB0 = 0;	// setting pin to be output
 	TRISBbits.TRISB1 = 0;	// setting pin to be output
 	TRISBbits.TRISB2 = 0;
-	TRISBbits.TRISB6 = 0;
-	//RPOR4bits.RP8R = 18;	// pin RB8 (RP8) for OC1
-	//RPOR4bits.RP9R = 19;	// pin RB9 (RP9) for OC2
+	TRISBbits.TRISB3 = 0;
 
 	TRISBbits.TRISB5 = 1;	// switch 1 is input; pin 14
 
@@ -69,7 +67,8 @@ int main(void) {
 	AD1CSSL = 0; // No inputs is scanned
 
 	AD1CON1bits.ADON = 1; // Turn on A/D
-
+	
+	LCDInitialize();
 	PWM_init(POT_POS);
 
 	/***************************************
@@ -89,9 +88,10 @@ int main(void) {
 
 		while (AD1CON1bits.DONE != 1){};     // keeps waiting until conversion finished
 		POT_POS = ADC1BUF0;
-
-		sprintf(value, "%6d", POT_POS);
-		LCDMoveCursor(0, 0); LCDPrintString(value);
+	//	LCDClear();
+		sprintf(value, "%6.2f", POT_POS);
+		LCDMoveCursor(0, 0);
+		LCDPrintString(value);
 
 		PWM_Update(POT_POS);
 
@@ -101,30 +101,28 @@ int main(void) {
 				RPOR0bits.RP0R = 0;	// left wheel
 				RPOR0bits.RP1R = 0;	// left wheel
 				RPOR1bits.RP2R = 0;	// right wheel
-				RPOR3bits.RP6R = 0;	// right wheel
+				RPOR1bits.RP3R = 0;	// right wheel
 				break;
 			case 1:		// Forward
 				RPOR0bits.RP0R = 18;	// left wheel
 				RPOR0bits.RP1R = 0;		// left wheel
 				RPOR1bits.RP2R = 19;	// right wheel
-				RPOR3bits.RP6R = 0;		// right wheel
+				RPOR1bits.RP3R = 0;		// right wheel
 				break;
 			case 2:     // Idle
 				RPOR0bits.RP0R = 0;	// left wheel
 				RPOR0bits.RP1R = 0;	// left wheel
 				RPOR1bits.RP2R = 0;	// right wheel
-				RPOR3bits.RP6R = 0;	// right wheel
+				RPOR1bits.RP3R = 0;	// right wheel
 				break;
 			case 3:		// Backward
 				RPOR0bits.RP0R = 0;		// left wheel
 				RPOR0bits.RP1R = 18;	// left wheel
 				RPOR1bits.RP2R = 0;		// right wheel
-				RPOR3bits.RP6R = 19;	// right wheel
+				RPOR1bits.RP3R = 19;	// right wheel
 				break;
 		}
 	}
-
-
 	return 0;
 }
 

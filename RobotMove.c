@@ -67,9 +67,11 @@ void PWM_Update(double pot_position) {
 	}
 
 	OC_value_right = DUTY_CYCLE_RIGHT * (PR_VALUE);		// set output compare value for new position
+	OC1R = OC_value_right;
 	OC1RS = OC_value_right;								// set the right motor value for the next cycle
 
 	OC_value_left = DUTY_CYCLE_LEFT * (PR_VALUE);		// set output compare value for new position
+	OC2R = OC_value_left;
 	OC2RS = OC_value_left;								// set the left mtoor value for the next cycle
 
 	return;
