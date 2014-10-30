@@ -16,7 +16,7 @@
 // These settings are appropriate for debugging the PIC microcontroller. If you need to 
 // program the PIC for standalone operation, change the COE_ON option to COE_OFF.
 
-_CONFIG1(JTAGEN_OFF & GCP_OFF & GWRP_OFF & BKBUG_ON & COE_ON & ICS_PGx1 &
+_CONFIG1(JTAGEN_OFF & GCP_OFF & GWRP_OFF & BKBUG_ON & COE_OFF & ICS_PGx1 &
 	FWDTEN_OFF & WINDIS_OFF & FWPSA_PR128 & WDTPS_PS32768)
 
 	// ******************************************************************************************* //
@@ -43,11 +43,14 @@ volatile double POT_POS = 0.0;
 
 int main(void) {
 	char value[8];
-
-	TRISBbits.TRISB0 = 0;	// setting pin to be output
+//	int ADC_value;
+//char value[8];
+//double AD_value;
 	TRISBbits.TRISB1 = 0;	// setting pin to be output
 	TRISBbits.TRISB2 = 0;
 	TRISBbits.TRISB3 = 0;
+	TRISBbits.TRISB4 = 0;
+	
 
 	TRISBbits.TRISB5 = 1;	// switch 1 is input; pin 14
 
@@ -65,7 +68,7 @@ int main(void) {
 	AD1CON1 = 0x20E4;
 	AD1CHS = 0; // Configure input channel
 	AD1CSSL = 0; // No inputs is scanned
-
+	IFS0bits.AD1IF = 0;
 	AD1CON1bits.ADON = 1; // Turn on A/D
 	
 	LCDInitialize();
@@ -93,33 +96,43 @@ int main(void) {
 		LCDMoveCursor(0, 0);
 		LCDPrintString(value);
 
+/*	while (IFS0bits.AD1IF ==0){}; // AD1CON1bits.DONE can be checked instead
+IFS0bits.AD1IF = 0;
+ADC_value = ADC1BUF0;
+sprintf(value, "%6d", ADC_value);
+LCDMoveCursor(0,0); LCDPrintString(value);
+AD_value = (ADC_value * 3.3)/1024;
+sprintf(value, "%6.2f", AD_value);
+LCDMoveCursor(1,0); LCDPrintString(value);*/
+
+
 		PWM_Update(POT_POS);
 
 		switch (state) {
 
 			case 0:		// Idle
-				RPOR0bits.RP0R = 0;	// left wheel
 				RPOR0bits.RP1R = 0;	// left wheel
-				RPOR1bits.RP2R = 0;	// right wheel
+				RPOR1bits.RP2R = 0;
 				RPOR1bits.RP3R = 0;	// right wheel
+				RPOR2bits.RP4R = 0;
 				break;
 			case 1:		// Forward
-				RPOR0bits.RP0R = 18;	// left wheel
-				RPOR0bits.RP1R = 0;		// left wheel
-				RPOR1bits.RP2R = 19;	// right wheel
-				RPOR1bits.RP3R = 0;		// right wheel
+				RPOR0bits.RP1R = 18;	// left wheel
+				RPOR1bits.RP2R = 0;
+				RPOR1bits.RP3R = 19;	// right wheel
+				RPOR2bits.RP4R = 0;
 				break;
 			case 2:     // Idle
-				RPOR0bits.RP0R = 0;	// left wheel
 				RPOR0bits.RP1R = 0;	// left wheel
-				RPOR1bits.RP2R = 0;	// right wheel
+				RPOR1bits.RP2R = 0;
 				RPOR1bits.RP3R = 0;	// right wheel
+				RPOR2bits.RP4R = 0;
 				break;
 			case 3:		// Backward
-				RPOR0bits.RP0R = 0;		// left wheel
-				RPOR0bits.RP1R = 18;	// left wheel
-				RPOR1bits.RP2R = 0;		// right wheel
-				RPOR1bits.RP3R = 19;	// right wheel
+				RPOR0bits.RP1R = 0;	// left wheel
+				RPOR1bits.RP2R = 18;
+				RPOR1bits.RP3R = 0;	// right wheel
+				RPOR2bits.RP4R = 19;
 				break;
 		}
 	}
@@ -131,9 +144,7 @@ void __attribute__((interrupt)) _CNInterrupt(void) { // for SW1 RB5
 
 	IFS1bits.CNIF = 0;
 
-	if (PORTBbits.RB5 == 1) {   // released
-		return;
-	}
+	if (PORTBbits.RB5 == 0) {   // press
 
 	//pressed (let's switch states)
 	if (state = 3) {
@@ -141,6 +152,7 @@ void __attribute__((interrupt)) _CNInterrupt(void) { // for SW1 RB5
 	}
 	else {
 		state++;
+	}
 	}
 	return;
 }
