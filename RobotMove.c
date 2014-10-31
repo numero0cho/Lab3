@@ -55,6 +55,7 @@ void PWM_Update(double pot_position) {
 	double DUTY_CYCLE_RIGHT = 0.0;
 	double DUTY_CYCLE_LEFT = 0.0;
 	double position_ratio = 0.0;
+	char value[8];
 
 	position_ratio = pot_position / (1023 / 2);			// update duty cycle for new position
 	if (position_ratio < 1.0) {							// turning right
@@ -65,14 +66,26 @@ void PWM_Update(double pot_position) {
 		DUTY_CYCLE_RIGHT = 1.0;							// right motor on full
 		DUTY_CYCLE_LEFT = 2 - position_ratio;			// turning left
 	}
-
+	
 	OC_value_right = DUTY_CYCLE_RIGHT * (PR_VALUE);		// set output compare value for new position
 	OC1R = OC_value_right;
 	OC1RS = OC_value_right;								// set the right motor value for the next cycle
+	
+	if(DUTY_CYCLE_LEFT < 0.0) DUTY_CYCLE_LEFT = 0.0;
+	sprintf(value, "%3.f", DUTY_CYCLE_RIGHT*100);
+	LCDMoveCursor(1, 0);
+	LCDPrintString(value);
+	LCDPrintChar('%');
 
+		
 	OC_value_left = DUTY_CYCLE_LEFT * (PR_VALUE);		// set output compare value for new position
 	OC2R = OC_value_left;
 	OC2RS = OC_value_left;								// set the left mtoor value for the next cycle
+	
+	if(DUTY_CYCLE_LEFT < 0.0) DUTY_CYCLE_LEFT = 0.0;
+	sprintf(value, "%3.f", DUTY_CYCLE_LEFT*100);
+	LCDPrintString(value);
+	LCDPrintChar('%');
 
 	return;
 }

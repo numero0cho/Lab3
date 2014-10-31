@@ -1,4 +1,4 @@
-Microchip Technology Inc, v(j]
+Microchip Technology Inc, vP}
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/coff-ld.exe
@@ -27,9 +27,6 @@ Command:
   -LC:\Program Files (x86)\Microchip\xc16\v1.21\lib \
   -Tp24FJ64GA002.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
-  --defsym=__MPLAB_DEBUG=1 \
-  --defsym=__MPLAB_DEBUGGER_PK3=1 \
-  --defsym=__ICD2RAM=1 \
   -Map=Lab3.map \
   --report-mem \
   -start-group \
@@ -71,8 +68,12 @@ c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(funpac
                               c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(fixunssfsi.o) (_funpack)
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_fF.XXo)
                               Lab3.o (_sprintf_fF)
+c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_s.XXo)
+                              (__sprintf_s)
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo)
                               c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_fF.XXo) (_vfprintf_fF)
+c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_s.XXo)
+                              c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_s.XXo) (_vfprintf_s)
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(powers.o)
                               c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo) (_powers_)
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(fputc.o)
@@ -123,34 +124,36 @@ c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(dpropa
                               c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(dunpack2.o) (_dPropagateNaN)
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(dtype.o)
                               c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(dcompare.o) (_dtype)
+c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fFs.XXo)
+                              (_vfprintf_fFs)
 
 
 Program Memory  [Origin = 0x200, Length = 0xa9fa]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200              0x15fc          0x20fa  (8442)
-.const                      0x17fc                 0x6             0x9  (9)
-.dinit                      0x1802               0x1b4           0x28e  (654)
-.text                       0x19b6               0x3c4           0x5a6  (1446)
+.text                        0x200              0x1628          0x213c  (8508)
+.const                      0x1828                 0xc            0x12  (18)
+.text                       0x1834               0x224           0x336  (822)
+.dinit                      0x1a58               0x1b4           0x28e  (654)
+.text                       0x1c0c               0x2c4           0x426  (1062)
 
-                     Total program memory used (bytes):         0x2937  (10551) 16%
+                     Total program memory used (bytes):         0x2b38  (11064) 16%
 
 
 Data Memory  [Origin = 0x800, Length = 0x2000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.icd                         0x800                0x50            0x50  (80)
-.ndata                       0x850                   0             0x6  (6)
-.data._powers_               0x856                   0           0x160  (352)
-.data.dpowers                0x9b6                   0            0xa0  (160)
-.data._iob                   0xa56                   0            0x26  (38)
-.data                        0xa7c                   0            0x18  (24)
-.bss                         0xa94                   0             0x6  (6)
-.data                        0xa9a                   0             0x2  (2)
+.ndata                       0x800                   0             0x6  (6)
+.data._powers_               0x806                   0           0x160  (352)
+.data.dpowers                0x966                   0            0xa0  (160)
+.data._iob                   0xa06                   0            0x26  (38)
+.data                        0xa2c                   0            0x18  (24)
+.bss                         0xa44                   0             0x6  (6)
+.data                        0xa4a                   0             0x2  (2)
 
-                        Total data memory used (bytes):          0x29c  (668) 8%
+                        Total data memory used (bytes):          0x24c  (588) 7%
 
 
 Dynamic Memory Usage
@@ -158,43 +161,43 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0xa9c                              0x1d64  (7524)
+stack                        0xa4c                              0x1db4  (7604)
 
-                        Maximum dynamic memory (bytes):         0x1d64  (7524)
+                        Maximum dynamic memory (bytes):         0x1db4  (7604)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0850                  _state
-                    0x0852                  _POT_POS
-                    0x0856                  __powers_
-                    0x0906                  __npowers_
-                    0x0a56                  __iob
-                    0x0a7a                  __Files
-                    0x0a94                  __outdone
-                    0x0a95                  __sibuf
-                    0x0a97                  __sobuf
-                    0x0a9a                  ___C30_UART
+                    0x0800                  _state
+                    0x0802                  _POT_POS
+                    0x0806                  __powers_
+                    0x08b6                  __npowers_
+                    0x0a06                  __iob
+                    0x0a2a                  __Files
+                    0x0a44                  __outdone
+                    0x0a45                  __sibuf
+                    0x0a47                  __sobuf
+                    0x0a4a                  ___C30_UART
 
 External Symbols in Data Memory (by name):
 
-                    0x0852                  _POT_POS
-                    0x0a7a                  __Files
-                    0x0a9a                  ___C30_UART
-                    0x0a56                  __iob
-                    0x0906                  __npowers_
-                    0x0a94                  __outdone
-                    0x0856                  __powers_
-                    0x0a95                  __sibuf
-                    0x0a97                  __sobuf
-                    0x0850                  _state
+                    0x0802                  _POT_POS
+                    0x0a2a                  __Files
+                    0x0a4a                  ___C30_UART
+                    0x0a06                  __iob
+                    0x08b6                  __npowers_
+                    0x0a44                  __outdone
+                    0x0806                  __powers_
+                    0x0a45                  __sibuf
+                    0x0a47                  __sobuf
+                    0x0800                  _state
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x000226                  __psv_init
-                  0x000236                  __data_init_standard
                   0x000236                  __data_init
+                  0x000236                  __data_init_standard
                   0x000294                  __DefaultInterrupt
                   0x0002fc                  ___floatunsisf
                   0x000300                  ___divsf3
@@ -215,15 +218,15 @@ External Symbols in Program Memory (by address):
                   0x0005f2                  __funpack
                   0x00061c                  ___muldf3
                   0x000706                  ___extendsfdf2
-                  0x000744                  ___ledf2
-                  0x000744                  ___eqdf2
                   0x000744                  ___ltdf2
+                  0x000744                  ___eqdf2
+                  0x000744                  ___ledf2
                   0x00074e                  ___nedf2
                   0x000758                  ___truncdfsf2
-                  0x0007ae                  _frexpl
                   0x0007ae                  _frexp
-                  0x0007e8                  ___gtdf2
+                  0x0007ae                  _frexpl
                   0x0007e8                  ___gedf2
+                  0x0007e8                  ___gtdf2
                   0x0007f2                  ___adddf3
                   0x0008ec                  ___fixunsdfdi
                   0x00094e                  ___divdf3
@@ -243,33 +246,38 @@ External Symbols in Program Memory (by address):
                   0x000d92                  __dPropagateNaN
                   0x000dae                  __dtype
                   0x000dd2                  __sprintf_fF
-                  0x000f78                  __vfprintf_fF
-                  0x0019b6                  _PWM_init
-                  0x001a90                  _PWM_Update
-                  0x001b56                  _DelayUs
-                  0x001b80                  _EnableLCD
-                  0x001bae                  _WriteLCD
-                  0x001bf2                  _LCDInitialize
-                  0x001c64                  _LCDClear
-                  0x001c72                  _LCDMoveCursor
-                  0x001c94                  _LCDPrintChar
-                  0x001ca6                  _LCDPrintString
-                  0x001cc2                  _main
-                  0x001d50                  __CNInterrupt
+                  0x000dfe                  __sprintf_s
+                  0x000dfe                  __sprintf_0
+                  0x0010b0                  __vfprintf_fF
+                  0x0010b0                  __vfprintf_0
+                  0x0010b0                  __vfprintf_fFs
+                  0x0010b0                  __vfprintf_s
+                  0x001834                  _PWM_init
+                  0x00190e                  _PWM_Update
+                  0x001c0c                  _DelayUs
+                  0x001c36                  _EnableLCD
+                  0x001c64                  _WriteLCD
+                  0x001ca8                  _LCDInitialize
+                  0x001d1a                  _LCDClear
+                  0x001d28                  _LCDMoveCursor
+                  0x001d4a                  _LCDPrintChar
+                  0x001d5c                  _LCDPrintString
+                  0x001d78                  _main
+                  0x001ea0                  __CNInterrupt
 
 External Symbols in Program Memory (by name):
 
-                  0x001b56                  _DelayUs
-                  0x001b80                  _EnableLCD
-                  0x001c64                  _LCDClear
-                  0x001bf2                  _LCDInitialize
-                  0x001c72                  _LCDMoveCursor
-                  0x001c94                  _LCDPrintChar
-                  0x001ca6                  _LCDPrintString
-                  0x001a90                  _PWM_Update
-                  0x0019b6                  _PWM_init
-                  0x001bae                  _WriteLCD
-                  0x001d50                  __CNInterrupt
+                  0x001c0c                  _DelayUs
+                  0x001c36                  _EnableLCD
+                  0x001d1a                  _LCDClear
+                  0x001ca8                  _LCDInitialize
+                  0x001d28                  _LCDMoveCursor
+                  0x001d4a                  _LCDPrintChar
+                  0x001d5c                  _LCDPrintString
+                  0x00190e                  _PWM_Update
+                  0x001834                  _PWM_init
+                  0x001c64                  _WriteLCD
+                  0x001ea0                  __CNInterrupt
                   0x000294                  __DefaultInterrupt
                   0x0007f2                  ___adddf3
                   0x00038a                  ___addsf3
@@ -319,11 +327,16 @@ External Symbols in Program Memory (by name):
                   0x000540                  __funpack2
                   0x000226                  __psv_init
                   0x000200                  __resetPRI
+                  0x000dfe                  __sprintf_0
                   0x000dd2                  __sprintf_fF
-                  0x000f78                  __vfprintf_fF
+                  0x000dfe                  __sprintf_s
+                  0x0010b0                  __vfprintf_0
+                  0x0010b0                  __vfprintf_fF
+                  0x0010b0                  __vfprintf_fFs
+                  0x0010b0                  __vfprintf_s
                   0x0007ae                  _frexp
                   0x0007ae                  _frexpl
-                  0x001cc2                  _main
+                  0x001d78                  _main
 
 Memory Configuration
 
@@ -360,7 +373,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/PIC24F\libpPI
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200       0x15fc
+.text             0x000200       0x1628
  *(.init)
  .init            0x000200         0x36 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
                   0x000200                  _resetPRI
@@ -460,19 +473,26 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/PIC24F\libpPI
  .libc._sprintf_fF._sprintf_fF
                   0x000dd2         0x2c c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_fF.XXo)
                   0x000dd2                  _sprintf_fF
- .libc.fround.fround
-                  0x000dfe         0xba c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo)
- .libc.scale.scale
-                  0x000eb8         0xc0 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo)
- .libc._vfprintf_fF._vfprintf_fF
-                  0x000f78        0x778 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo)
-                  0x000f78                  _vfprintf_fF
+ .libc._sprintf_s._sprintf_s
+                  0x000dfe         0x2c c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_s.XXo)
+                  0x000dfe                  _sprintf_s
+                  0x000dfe                  _sprintf_0
  .libc.fputc.fputc
-                  0x0016f0         0x88 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(fputc.o)
-                  0x0016f0                  fputc
+                  0x000e2a         0x88 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(fputc.o)
+                  0x000e2a                  fputc
  .libc._flsbuf._flsbuf
-                  0x001778         0x84 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(flsbuf.o)
-                  0x001778                  _flsbuf
+                  0x000eb2         0x84 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(flsbuf.o)
+                  0x000eb2                  _flsbuf
+ .libc.fround.fround
+                  0x000f36         0xba c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fFs.XXo)
+ .libc.scale.scale
+                  0x000ff0         0xc0 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fFs.XXo)
+ .libc._vfprintf_fFs._vfprintf_fFs
+                  0x0010b0        0x778 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fFs.XXo)
+                  0x0010b0                  _vfprintf_s
+                  0x0010b0                  _vfprintf_fF
+                  0x0010b0                  _vfprintf_0
+                  0x0010b0                  _vfprintf_fFs
 
 usercode
  *(usercode)
@@ -484,10 +504,6 @@ __CONFIG2         0x00abfc          0x2
 __CONFIG1         0x00abfe          0x2
  *(__CONFIG1.sec*)
  __CONFIG1.sec    0x00abfe          0x2 Lab3.o
-
-.icd                0x0800         0x50
-                    0x0850                  . = (. + DEFINED (__ICD2RAM)?0x50:0x0)
- *fill*             0x0800         0x5000
 
 .comment
  *(.comment)
@@ -551,7 +567,7 @@ __CONFIG1         0x00abfe          0x2
                   0x000034          0x4 LONG 0x294 DEFINED (__SI2C1Interrupt)?ABSOLUTE (__SI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000036          0x4 LONG 0x294 DEFINED (__MI2C1Interrupt)?ABSOLUTE (__MI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000038          0x4 LONG 0x294 DEFINED (__CompInterrupt)?ABSOLUTE (__CompInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00003a          0x4 LONG 0x1d50 DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00003a          0x4 LONG 0x1ea0 DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00003c          0x4 LONG 0x294 DEFINED (__INT1Interrupt)?ABSOLUTE (__INT1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00003e          0x4 LONG 0x294 DEFINED (__Interrupt21)?ABSOLUTE (__Interrupt21):ABSOLUTE (__DefaultInterrupt)
                   0x000040          0x4 LONG 0x294 DEFINED (__Interrupt22)?ABSOLUTE (__Interrupt22):ABSOLUTE (__DefaultInterrupt)
@@ -679,7 +695,7 @@ __CONFIG1         0x00abfe          0x2
                   0x000134          0x4 LONG 0x294 DEFINED (__AltSI2C1Interrupt)?ABSOLUTE (__AltSI2C1Interrupt):DEFINED (__SI2C1Interrupt)?ABSOLUTE (__SI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000136          0x4 LONG 0x294 DEFINED (__AltMI2C1Interrupt)?ABSOLUTE (__AltMI2C1Interrupt):DEFINED (__MI2C1Interrupt)?ABSOLUTE (__MI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000138          0x4 LONG 0x294 DEFINED (__AltCompInterrupt)?ABSOLUTE (__AltCompInterrupt):DEFINED (__CompInterrupt)?ABSOLUTE (__CompInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00013a          0x4 LONG 0x1d50 DEFINED (__AltCNInterrupt)?ABSOLUTE (__AltCNInterrupt):DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00013a          0x4 LONG 0x1ea0 DEFINED (__AltCNInterrupt)?ABSOLUTE (__AltCNInterrupt):DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00013c          0x4 LONG 0x294 DEFINED (__AltINT1Interrupt)?ABSOLUTE (__AltINT1Interrupt):DEFINED (__INT1Interrupt)?ABSOLUTE (__INT1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00013e          0x4 LONG 0x294 DEFINED (__AltInterrupt21)?ABSOLUTE (__AltInterrupt21):DEFINED (__Interrupt21)?ABSOLUTE (__Interrupt21):ABSOLUTE (__DefaultInterrupt)
                   0x000140          0x4 LONG 0x294 DEFINED (__AltInterrupt22)?ABSOLUTE (__AltInterrupt22):DEFINED (__Interrupt22)?ABSOLUTE (__Interrupt22):ABSOLUTE (__DefaultInterrupt)
@@ -1355,9 +1371,6 @@ __CONFIG1         0x00abfe          0x2
                     0x0230                  UART2 = 0x230
                     0x0230                  _UART2 = 0x230
                     0x0001                  __MPLAB_BUILD = 0x1
-                    0x0001                  __MPLAB_DEBUG = 0x1
-                    0x0001                  __MPLAB_DEBUGGER_PK3 = 0x1
-                    0x0001                  __ICD2RAM = 0x1
 START GROUP
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfx-coff.a
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-coff.a
@@ -1369,7 +1382,7 @@ LOAD data_init
 LOAD default_isr
 
 __c30_signature
-                  0x000000        0x108
+                  0x000000        0x10e
  __c30_signature
                   0x000000          0x6 Lab3.o
  __c30_signature
@@ -1407,7 +1420,7 @@ __c30_signature
  __c30_signature
                   0x000066          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_fF.XXo)
  __c30_signature
-                  0x00006c          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo)
+                  0x00006c          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(sprintf_s.XXo)
  __c30_signature
                   0x000072          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(powers.o)
  __c30_signature
@@ -1458,58 +1471,63 @@ __c30_signature
                   0x0000fc          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(dpropagateNaN.o)
  __c30_signature
                   0x000102          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-coff.a(dtype.o)
+ __c30_signature
+                  0x000108          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fFs.XXo)
 
-.ndata              0x0850          0x6
- .ndata             0x0850          0x6 Lab3.o
-                    0x0850                  state
-                    0x0852                  POT_POS
+.ndata              0x0800          0x6
+ .ndata             0x0800          0x6 Lab3.o
+                    0x0800                  state
+                    0x0802                  POT_POS
 
-.data._powers_      0x0856        0x160
+.data._powers_      0x0806        0x160
  .data._powers_
-                    0x0856        0x160 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(powers.o)
-                    0x0856                  _powers_
-                    0x0906                  _npowers_
+                    0x0806        0x160 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(powers.o)
+                    0x0806                  _powers_
+                    0x08b6                  _npowers_
 
-.data.dpowers       0x09b6         0xa0
- .data.dpowers      0x09b6         0xa0 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo)
+.data.dpowers       0x0966         0xa0
+ .data.dpowers      0x0966         0xa0 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fFs.XXo)
 
-.data._iob          0x0a56         0x26
- .data._iob         0x0a56         0x26 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(_iob.o)
-                    0x0a56                  _iob
-                    0x0a7a                  _Files
+.data._iob          0x0a06         0x26
+ .data._iob         0x0a06         0x26 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(_iob.o)
+                    0x0a06                  _iob
+                    0x0a2a                  _Files
 
-.data               0x0a7c         0x18
- .data              0x0a7c         0x18 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fF.XXo)
+.data               0x0a2c         0x18
+ .data              0x0a2c         0x18 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(doprnt_fFs.XXo)
 
-.bss                0x0a94          0x6
- .bss               0x0a94          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(_iob.o)
-                    0x0a94                  _outdone
-                    0x0a95                  _sibuf
-                    0x0a97                  _sobuf
+.bss                0x0a44          0x6
+ .bss               0x0a44          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-coff.a(_iob.o)
+                    0x0a44                  _outdone
+                    0x0a45                  _sibuf
+                    0x0a47                  _sobuf
 
-.data               0x0a9a          0x2
- .data              0x0a9a          0x2 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-coff.a(c30_uart.o)
-                    0x0a9a                  __C30_UART
+.data               0x0a4a          0x2
+ .data              0x0a4a          0x2 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-coff.a(c30_uart.o)
+                    0x0a4a                  __C30_UART
 
-.const              0x97fc          0x6 load address 0x0017fc  
- .const             0x97fc          0x6 Lab3.o
+.const              0x9828          0xc load address 0x001828  
+ .const             0x9828          0x6 Lab3.o
+ .const             0x982e          0x6 RobotMove.o
 
-.dinit            0x001802        0x1b4
- .dinit           0x001802        0x1b4 data_init
+.text             0x001834        0x224
+ .text            0x001834        0x224 RobotMove.o
+                  0x001834                  PWM_init
+                  0x00190e                  PWM_Update
 
-.text             0x0019b6        0x3c4
- .text            0x0019b6        0x1a0 RobotMove.o
-                  0x0019b6                  PWM_init
-                  0x001a90                  PWM_Update
- .text            0x001b56        0x16c lcd.o
-                  0x001b56                  DelayUs
-                  0x001b80                  EnableLCD
-                  0x001bae                  WriteLCD
-                  0x001bf2                  LCDInitialize
-                  0x001c64                  LCDClear
-                  0x001c72                  LCDMoveCursor
-                  0x001c94                  LCDPrintChar
-                  0x001ca6                  LCDPrintString
- .text            0x001cc2         0xb8 Lab3.o
-                  0x001cc2                  main
-                  0x001d50                  _CNInterrupt
+.dinit            0x001a58        0x1b4
+ .dinit           0x001a58        0x1b4 data_init
+
+.text             0x001c0c        0x2c4
+ .text            0x001c0c        0x16c lcd.o
+                  0x001c0c                  DelayUs
+                  0x001c36                  EnableLCD
+                  0x001c64                  WriteLCD
+                  0x001ca8                  LCDInitialize
+                  0x001d1a                  LCDClear
+                  0x001d28                  LCDMoveCursor
+                  0x001d4a                  LCDPrintChar
+                  0x001d5c                  LCDPrintString
+ .text            0x001d78        0x158 Lab3.o
+                  0x001d78                  main
+                  0x001ea0                  _CNInterrupt
