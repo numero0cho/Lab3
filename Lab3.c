@@ -16,7 +16,7 @@
 // These settings are appropriate for debugging the PIC microcontroller. If you need to 
 // program the PIC for standalone operation, change the COE_ON option to COE_OFF.
 
-_CONFIG1(JTAGEN_OFF & GCP_OFF & GWRP_OFF & BKBUG_ON & COE_OFF & ICS_PGx1 &
+_CONFIG1(JTAGEN_OFF & GCP_OFF & GWRP_OFF & BKBUG_ON & COE_ON & ICS_PGx1 &
 	FWDTEN_OFF & WINDIS_OFF & FWPSA_PR128 & WDTPS_PS32768)
 
 	// ******************************************************************************************* //
@@ -92,7 +92,7 @@ int main(void) {
 		while (AD1CON1bits.DONE != 1){};     // keeps waiting until conversion finished
 		POT_POS = ADC1BUF0;
 	//	LCDClear();
-		sprintf(value, "%6.2f", POT_POS);
+		sprintf(value, "%4.2f", POT_POS);
 		LCDMoveCursor(0, 0);
 		LCDPrintString(value);
 
@@ -143,16 +143,16 @@ LCDMoveCursor(1,0); LCDPrintString(value);*/
 void __attribute__((interrupt)) _CNInterrupt(void) { // for SW1 RB5
 
 	IFS1bits.CNIF = 0;
+	LATBbits.LATB15 = 1;
 
-	if (PORTBbits.RB5 == 0) {   // press
-
+	if (PORTBbits.RB5 == 1) {   // press
+	
 	//pressed (let's switch states)
 	if (state = 3) {
 		state = 0;
 	}
-	else {
+		else {
 		state++;
 	}
 	}
-	return;
 }
